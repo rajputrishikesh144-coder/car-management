@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🚗 CarManager
+        </div>
+
+        <button id="darkModeBtn" class="dark-btn">
+            🌙
+        </button>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- Page Header -->
+        <section class="page-header">
+
+            <div>
+                <h1>Car Management</h1>
+                <p>Manage your cars easily</p>
+            </div>
+
+            <button
+                class="add-car-btn"
+                onclick="openModal()"
+            >
+                + Add Car
+            </button>
+
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">🚗</div>
+
+                <div>
+                    <p>Total Cars</p>
+                    <h2 id="totalCars">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon green">✓</div>
+
+                <div>
+                    <p>Available</p>
+                    <h2 id="availableCars">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon red">💰</div>
+
+                <div>
+                    <p>Sold</p>
+                    <h2 id="soldCars">0</h2>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon orange">₹</div>
+
+                <div>
+                    <p>Total Value</p>
+                    <h2 id="totalValue">₹0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="controls">
+
+            <div class="search-box">
+                🔍
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search car by name or brand..."
+                >
+            </div>
+
+
+            <select id="statusFilter">
+
+                <option value="all">
+                    All Cars
+                </option>
+
+                <option value="Available">
+                    Available
+                </option>
+
+                <option value="Sold">
+                    Sold
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- Cars -->
+        <section>
+
+            <div
+                id="carList"
+                class="car-grid"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Add/Edit Modal -->
+
+    <div
+        id="carModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">
+                    Add New Car
+                </h2>
+
+                <button
+                    class="close-btn"
+                    onclick="closeModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="carForm">
+
+                <input
+                    type="hidden"
+                    id="carId"
+                >
+
+
+                <div class="form-group">
+
+                    <label>
+                        Car Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="carName"
+                        placeholder="e.g. Swift"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Brand
+                        </label>
+
+                        <input
+                            type="text"
+                            id="carBrand"
+                            placeholder="e.g. Maruti"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Model Year
+                        </label>
+
+                        <input
+                            type="number"
+                            id="carYear"
+                            placeholder="2025"
+                            min="1900"
+                            max="2100"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Price (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="carPrice"
+                            placeholder="e.g. 800000"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Status
+                        </label>
+
+                        <select id="carStatus">
+
+                            <option value="Available">
+                                Available
+                            </option>
+
+                            <option value="Sold">
+                                Sold
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Fuel Type
+                    </label>
+
+                    <select id="carFuel">
+
+                        <option value="Petrol">
+                            Petrol
+                        </option>
+
+                        <option value="Diesel">
+                            Diesel
+                        </option>
+
+                        <option value="Electric">
+                            Electric
+                        </option>
+
+                        <option value="Hybrid">
+                            Hybrid
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Car
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
